@@ -11,18 +11,31 @@ program
 program.parse(process.argv);
 const argv = program.opts();
 
-const actions = {
-  list: operation.listContacts,
-  get: operation.getContactById,
-  add: operation.addContact,
-  remove: operation.removeContact,
-  update: operation.updateContact,
-};
-
 async function invokeAction({ action, id, name, email, phone }) {
-  const result = await actions[action]({ id, name, email, phone });
+  switch (action) {
+    case "list":
+      console.table(await operation.listContacts());
+      break;
 
-  action === "list" ? console.table(result) : console.log(result);
+    case "get":
+      console.log(await operation.getContactById({ id }));
+      break;
+
+    case "add":
+      console.log(await operation.addContact({ name, email, phone }));
+      break;
+
+    case "update":
+      console.log(await operation.updateContact({ id, name, email, phone }));
+      break;
+
+    case "remove":
+      console.log(await operation.removeContact({ id }));
+      break;
+
+    default:
+      console.warn("\x1B[31m Unknown action type!");
+  }
 }
 
 invokeAction(argv);
