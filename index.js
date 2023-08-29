@@ -11,31 +11,47 @@ program
 program.parse(process.argv);
 const argv = program.opts();
 
-async function invokeAction({ action, id, name, email, phone }) {
-  switch (action) {
-    case "list":
-      console.table(await operation.listContacts());
-      break;
+//! solution 1: with a switch
+// async function invokeAction({ action, ...inputData }) {
+//   switch (action) {
+//     case "list":
+//       console.table(await operation.listContacts());
+//       break;
 
-    case "get":
-      console.log(await operation.getContactById({ id }));
-      break;
+//     case "get":
+//       console.log(await operation.getContactById({ ...inputData }));
+//       break;
 
-    case "add":
-      console.log(await operation.addContact({ name, email, phone }));
-      break;
+//     case "add":
+//       console.log(await operation.addContact({ ...inputData }));
+//       break;
 
-    case "update":
-      console.log(await operation.updateContact({ id, name, email, phone }));
-      break;
+//     case "update":
+//       console.log(await operation.updateContact({ ...inputData }));
+//       break;
 
-    case "remove":
-      console.log(await operation.removeContact({ id }));
-      break;
+//     case "remove":
+//       console.log(await operation.removeContact({ ...inputData }));
+//       break;
 
-    default:
-      console.warn("\x1B[31m Unknown action type!");
-  }
+//     default:
+//       console.warn("\x1B[31m Unknown action type!");
+//   }
+// }
+
+//! solution 2:
+const actions = {
+  list: operation.listContacts,
+  get: operation.getContactById,
+  add: operation.addContact,
+  remove: operation.removeContact,
+  update: operation.updateContact,
+};
+
+async function invokeAction({ action, ...inputData }) {
+  const result = await actions[action]({ ...inputData });
+
+  action === "list" ? console.table(result) : console.log(result);
 }
 
 invokeAction(argv);
