@@ -26,7 +26,7 @@ node index -a add -n Mango -e mango@gmail.com -p 322-22-22 && node index -a list
 
 ![add](assets/add.png)
 
-# Обновляє контакт та виводимо в консоль масив з обєктами, до оновлення і після або null, якщо контакту з таким id не існує.
+# Обновляємо контакт та виводимо в консоль масив з обєктами, до оновлення і після або null, якщо контакту з таким id не існує.
 
 ```bash
 node index -a update -i qdggE76Jtbfd9eWJHrssH -n update -e update@gmail.com -p 000-00-00 && node index -a list
