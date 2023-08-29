@@ -49,7 +49,7 @@ node index -a remove -i non-existent-ID
 ```
 
 ![remove](assets/remove.png)
-
+```bash
 node index -a list
 node index -a get -i 05olLMgyVQdWRwgKfg5J6
 node index -a get -i non-existent-ID
@@ -58,3 +58,4 @@ node index -a update -i qdggE76Jtbfd9eWJHrssH -n update -e update@gmail.com -p 3
 node index -a update -i non-existent-ID -n update -e update@gmail.com -p 322-22-22 && node index -a list
 node index -a remove -i qdggE76Jtbfd9eWJHrssH && node index -a list
 node index -a remove -i non-existent-ID && node index -a list
+```
