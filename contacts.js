@@ -28,7 +28,6 @@ const addContact = async ({ name = "", email = "", phone = "" }) => {
   if (name || email || phone) {
     const newContact = { id: nanoid(20), name, email, phone };
     const data = await listContacts();
-
     const updatedData = [...data, newContact];
 
     fs.writeFile(contactsPath, JSON.stringify(updatedData, null, 2));
@@ -41,7 +40,6 @@ const addContact = async ({ name = "", email = "", phone = "" }) => {
 const removeContact = async ({ id }) => {
   if (id) {
     const data = await listContacts();
-
     const result = getContactIndexById({ id, data });
 
     if (result) {
