@@ -11,7 +11,6 @@ program
 program.parse(process.argv);
 const argv = program.opts();
 
-//! solution 1: with a switch
 async function invokeAction({ action, ...inputData }) {
   switch (action) {
     case "list":
@@ -39,23 +38,28 @@ async function invokeAction({ action, ...inputData }) {
   }
 }
 
-//! solution 2:
-// const actions = {
-//   list: operation.listContacts,
-//   get: operation.getContactById,
-//   add: operation.addContact,
-//   remove: operation.removeContact,
-//   update: operation.updateContact,
-// };
-
-// async function invokeAction({ action, ...inputData }) {
-//   try {
-//     const result = await actions[action]({ ...inputData });
-//     action === "list" ? console.table(result) : console.log(result);
-//   } catch (error) {
-//     console.warn("\x1B[31m Unknown action type!");
-//     console.warn("error:-------", error.message);
-//   }
-// }
-
 invokeAction(argv);
+
+/*
+
+const actions = {
+  list: operation.listContacts,
+  get: operation.getContactById,
+  add: operation.addContact,
+  remove: operation.removeContact,
+  update: operation.updateContact,
+};
+
+async function invokeAction({ action, ...inputData }) {
+  try {
+    const result = await actions[action]({ ...inputData });
+    action === "list" ? console.table(result) : console.log(result);
+  } catch (error) {
+    console.warn("\x1B[31m Unknown action type!");
+    console.warn("error:-------", error.message);
+  }
+}
+
+*/
+
+
