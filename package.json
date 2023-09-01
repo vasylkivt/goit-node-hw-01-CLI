@@ -12,12 +12,11 @@
   "author": "Taras Vasylkiv",
   "license": "ISC",
   "devDependencies": {
-    "colors": "^1.4.0",
-    "commander": "^11.0.0",
-    "nodemon": "^3.0.1",
-    "yargs": "^17.7.2"
+    "nodemon": "^3.0.1"
   },
   "dependencies": {
-    "nanoid": "^3.3.6"
+    "nanoid": "^3.3.6",
+    "colors": "^1.4.0",
+    "commander": "^11.0.0"
   }
 }
